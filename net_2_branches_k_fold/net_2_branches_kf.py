@@ -14,8 +14,6 @@ import wandb
 import GPUtil
 import numpy as np
 from PIL import Image
-from skimage import io
-from prettytable import PrettyTable
 
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, average_precision_score
