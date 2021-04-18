@@ -42,7 +42,7 @@ wandb.init(project='net_2_branches_kf')
 # In[ ]:
 
 
-DEVICE_ID = 0
+DEVICE_ID = 3
 if torch.cuda.is_available():
     dev = f'cuda:{DEVICE_ID}'
 else:
@@ -98,7 +98,7 @@ class Monitor(Thread):
     def run(self):
         while not self.stopped:
             for gpu in GPUtil.getGPUs():
-                if gpu.id == 0:
+                if gpu.id == DEVICE_ID:
                     print('|'.join([f'{"ID": ^5}', f'{"GPU util.": ^10}', f'{"Memory util.": ^14}', f'{"Memory used": ^14}',
                                     f'{"Memory total": ^14}', f'{"T": ^6}']))
                     print('|'.join([f'{gpu.id: ^5}', f'{f"{int(gpu.load * 100)}%": ^10}', f'{f"{int(gpu.memoryUtil * 100)}%": ^14}',
@@ -230,7 +230,7 @@ dataset = MorphDisDataset(images, labels_diseases, labels_morphology, secondary_
 # In[ ]:
 
 
-kf = StratifiedKFold(n_splits=5, random_state=42)
+kf = StratifiedKFold(n_splits=5)
 for i, (train_indexes, test_indexes) in enumerate(kf.split(np.arange(len(labels_diseases)), labels_diseases)):
     if i == wandb.config.fold_index:
         train_sampler = SubsetRandomSampler(train_indexes)
