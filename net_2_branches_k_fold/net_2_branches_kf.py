@@ -106,7 +106,6 @@ class Monitor(Thread):
                     print('|'.join([f'{gpu.id: ^5}', f'{f"{int(gpu.load * 100)}%": ^10}', f'{f"{int(gpu.memoryUtil * 100)}%": ^14}',
                                     f'{f"{int(gpu.memoryUsed)}MB": ^14}', f'{f"{int(gpu.memoryTotal)}MB": ^14}',
                                     f'{f"{int(gpu.memoryUsed)}С°": ^6}']))
-                                print(gpu_stats)
             time.sleep(self.delay)
 
     def stop(self):
