@@ -305,7 +305,7 @@ def get_metric_value(metric_name, y_true, y_pred):
 
 def log_epoch_diseases(epoch, y_true_train, y_pred_train, y_true_test, y_pred_test, train_loss, test_loss,
                        current_metrics):
-    step = {'epoch': epoch, f'dis loss/train': train_loss, f'dis loss/test': test_loss}
+    step = {'epoch': epoch + 1, f'dis loss/train': train_loss, f'dis loss/test': test_loss}
 
     for k, v in current_metrics.items():
         if 'train' in k:
