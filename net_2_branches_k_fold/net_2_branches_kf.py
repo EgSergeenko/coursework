@@ -102,7 +102,7 @@ class Monitor(Thread):
                                     f'{"Memory total": ^14}', f'{"T": ^6}']))
                     print('|'.join([f'{gpu.id: ^5}', f'{f"{int(gpu.load * 100)}%": ^10}', f'{f"{int(gpu.memoryUtil * 100)}%": ^14}',
                                     f'{f"{int(gpu.memoryUsed)}MB": ^14}', f'{f"{int(gpu.memoryTotal)}MB": ^14}',
-                                    f'{f"{int(gpu.memoryUsed)}С°": ^6}']))
+                                    f'{f"{int(gpu.temperature)}С°": ^6}']))
             time.sleep(self.delay)
 
     def stop(self):
@@ -462,7 +462,7 @@ def initialize_metrics(dis_prefix, mor_prefix, mapping):
 monitor = Monitor(600)
 metrics_diseases, metrics_morphology = initialize_metrics('dis', 'mor', mapping_morphology)
 for epoch in range(wandb.config.epochs):
-    print(f'Epoch {epoch}:')
+    print(f'Epoch {epoch + 1}:')
     train_net(net, optimizer, train_loader, 250)
     b1, b2 = evaluate_net(net, train_loader, 250, 'train')
     y_true_train_b1, y_pred_train_b1, loss_train_b1 = b1
