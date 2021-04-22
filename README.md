@@ -12,4 +12,5 @@
 
 * [Сеть для распознавания заболеваний](https://wandb.ai/truffaut/net_diseases)
 * [Сеть для распознавания морфологии](https://wandb.ai/truffaut/net_morphology)
+* [Сеть для совместного распознавания морфологии и заболеваний](https://wandb.ai/truffaut/net_2_branches_kf)
 
