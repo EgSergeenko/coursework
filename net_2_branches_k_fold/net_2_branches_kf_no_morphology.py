@@ -35,13 +35,13 @@ warnings.filterwarnings('ignore')
 # In[ ]:
 
 
-wandb.init(project='net_2_branches_kf')
+wandb.init(project='net_2_branches_kf', tags=['dis-only'])
 
 
 # In[ ]:
 
 
-DEVICE_ID = 3
+DEVICE_ID = 2
 if torch.cuda.is_available():
     dev = f'cuda:{DEVICE_ID}'
 else:
@@ -64,7 +64,7 @@ LABELS_MORPHOLOGY_FILE = 'net_2_branches_morphology.pickle'
 wandb.config.lr = 0.0001
 wandb.config.batch_size = 32
 wandb.config.epochs = 100
-wandb.config.fold_index = 0
+wandb.config.fold_index = 4
 
 
 # In[ ]:
