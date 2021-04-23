@@ -64,7 +64,7 @@ LABELS_MORPHOLOGY_FILE = 'net_2_branches_morphology.pickle'
 wandb.config.lr = 0.0001
 wandb.config.batch_size = 32
 wandb.config.epochs = 100
-wandb.config.fold_index = 1
+wandb.config.fold_index = 2
 
 
 # In[ ]:
@@ -239,8 +239,8 @@ for i, (train_indexes, test_indexes) in enumerate(kf.split(np.arange(len(labels_
 # In[ ]:
 
 
-train_loader = DataLoader(dataset, batch_size=wandb.config.batch_size, sampler=train_sampler)
-test_loader = DataLoader(dataset, batch_size=wandb.config.batch_size, sampler=test_sampler)
+train_loader = DataLoader(dataset, batch_size=wandb.config.batch_size, sampler=train_sampler, num_workers=2)
+test_loader = DataLoader(dataset, batch_size=wandb.config.batch_size, sampler=test_sampler, num_workers=2)
 
 
 # In[ ]:
