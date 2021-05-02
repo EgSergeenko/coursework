@@ -41,7 +41,7 @@ wandb.init(project='net_2_branches_kf', tags=['morph-only'])
 # In[ ]:
 
 
-DEVICE_ID = 1
+DEVICE_ID = 2
 if torch.cuda.is_available():
     dev = f'cuda:{DEVICE_ID}'
 else:
@@ -64,7 +64,7 @@ LABELS_MORPHOLOGY_FILE = 'net_2_branches_morphology.pickle'
 wandb.config.lr = 0.0001
 wandb.config.batch_size = 32
 wandb.config.epochs = 100
-wandb.config.fold_index = 2
+wandb.config.fold_index = 0
 
 
 # In[ ]:
@@ -421,7 +421,7 @@ def train_net(net, optimizer, data_loader, log_step):
         o2 = o2[mask != 1]
         loss = criterion_morphology(o2, labels_morphology)
 
-        if torch.isnan(loss).any():
+        if not torch.isnan(loss).any():
             loss.backward()
             optimizer.step()
         if (i + 1) % log_step == 0:
